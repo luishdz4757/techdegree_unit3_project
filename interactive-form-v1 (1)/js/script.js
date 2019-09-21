@@ -13,13 +13,21 @@ $('#colors-js-puns label').append("Please select a T-shirt theme");
 $('#color option').hide();
 
 //If theme jspuns shirt is seleected then only jspuns color show
-$('#design').val('js puns').click(function() {
-    $('#color').val('tomato').remove();
-    $('#color').val('steelblue').remove();
-    $('#color').val('dimgrey').remove();
+if ($('#design').val('js puns')('clicked')) {
+    $('#color').val('tomato').hide();
+    $('#color').val('steelblue').hide();
+    $('#color').val('dimgrey').hide();
     $('#color').val('cornflowerblue').show();
     $('#color').val('darkslategrey').show();
     $('#color').val('gold').show();
-})
-"If statement in jquery."
-//While if other shirt theme is selected only that corresponing colors show up as well.
+
+    //While if other shirt theme is selected only that corresponing colors show up as well.
+}; else {
+    $('#color').val('tomato').show();
+    $('#color').val('steelblue').show();
+    $('#color').val('dimgrey').show();
+    $('#color').val('cornflowerblue').hide();
+    $('#color').val('darkslategrey').hide();
+    $('#color').val('gold').hide();
+}
+
