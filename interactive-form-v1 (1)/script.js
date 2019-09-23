@@ -19,7 +19,7 @@ $('#title').change ( () => {
 
 //Hides the color options from the drop down menu
 $('#color').hide();
-$('#colors-js-puns label');
+$('#colors-js-puns label').hide();
 
 //If theme jspuns shirt is seleected then only jspuns color show
  if ($('#design').val() === 'js puns') {
