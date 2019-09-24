@@ -22,7 +22,7 @@ $('#color').hide();
 $('#colors-js-puns label').hide();
 
 //If theme jspuns shirt is seleected then only jspuns color show
- $('#design').change (function ()  { 
+ $('#design').change ( function ()  { 
     if ($('#design').val() === 'js puns') {
         $('#color').show();
         $('#color-js-puns label').show();
@@ -52,14 +52,14 @@ $('.activities').append(activityElement);
 let totalActivityCost = 0;
 
 //Change listener
-$('.activities').change (function (e) {
+$('.activities').change( function () {
    const $elementTarget = e.target;
    const $dataCostActivity = $($elementTarget).attr('data-cost');
 //Adding cost
-    if ($elementTarget.attr('checked') === true {
+    if ($elementTarget.attr('checked') === true) {
        //cost of individual activity
         activityCost =  $dataCostActivity ;
-       totalActivityCost += activityCost;
+        totalActivityCost += activityCost;
 //Taking off cost, subtracting   
     } else {
 
