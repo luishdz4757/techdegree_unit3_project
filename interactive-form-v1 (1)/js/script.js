@@ -47,24 +47,42 @@ $('#colors-js-puns label').hide();
 // Activity Section
 
 //Create element to display total cost and append it to "".activity"
-const activityElement = '<span></span>'
+let activityElement = $('<span></span>');
 $('.activities').append(activityElement);
 let totalActivityCost = 0;
 
 //Change listener
-$('.activities').change( function () {
-   const $elementTarget = e.target;
-   const $dataCostActivity = $($elementTarget).attr('data-cost');
+$('.activities').change(  (e) => {
+   let elementTarget = $(e.target);
+   let $dataCostActivity = $(elementTarget).attr('data-cost');
 //Adding cost
-    if ($elementTarget.attr('checked') === true) {
+    if (elementTarget.attr('checked') === true) {
        //cost of individual activity
-        activityCost =  $dataCostActivity ;
+        activityCost =  parseInt($dataCostActivity);
         totalActivityCost += activityCost;
 //Taking off cost, subtracting   
     } else {
-
-        totalActivityCost = totalActivityCost - activityCost;
+        activityCost =  parseInt($dataCostActivity);
+        totalActivityCost -= activityCost;
     }
+
+    activityElement.text('Total: $' + totalActivityCost);
+//Date and time conflict
+let $dateTime = elementTarget.attr('data-date-and-time');
+
+$('.activities input').each(function (){
+  if ($(this).attr('data-day-and-time') === $dateTime && elementTarget != $(this)){
+    if ($(elementTarget).is('checked') === true) {
+        $(this).attr('disabled', true);
+        $(elementTarget).attr('disabled', false);
+    } else {
+        $(this).attr('disabled', false);
+        $(elementTarget).attr('disabled', false);
+    }
+
+  }
+
+})
 
 });
 
