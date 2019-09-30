@@ -54,7 +54,7 @@ let totalActivityCost = 0;
 //Change listener
 $('.activities').change(  (e) => {
    let elementTarget = $(e.target);
-   let dataCostActivity = ($(elementTarget).attr('data-cost'));
+   let dataCostActivity = ($(elementTarget).attr('data-cost').replace(/[$,]+/, ''));
 //Adding cost
     if (elementTarget.attr('checked') === true) {
        //cost of individual activity
@@ -63,7 +63,7 @@ $('.activities').change(  (e) => {
 //Taking off cost, subtracting   
     } else {
         activityCost =  parseInt(dataCostActivity);
-        totalActivityCost -= activityCost;
+        totalActivityCost = totalActivityCost - activityCost;
     }
 
     activityElement.text('Total: $' + totalActivityCost);
