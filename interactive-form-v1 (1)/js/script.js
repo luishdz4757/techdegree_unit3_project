@@ -56,7 +56,7 @@ $('.activities').change(  (e) => {
    let elementTarget = $(e.target);
    let dataCostActivity = ($(elementTarget).attr('data-cost').replace(/[$,]+/, ''));
 //Adding cost
-    if (elementTarget.attr('checked') === true) {
+    if (elementTarget.prop('checked') === true) {
        //cost of individual activity
         activityCost =  parseInt(dataCostActivity);
         totalActivityCost += activityCost;
