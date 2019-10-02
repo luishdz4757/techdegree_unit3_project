@@ -73,11 +73,10 @@ let $dateTime = elementTarget.attr('data-date-and-time');
 $('.activities input').each(function (){
   if ($(this).attr('data-day-and-time') === $dateTime && elementTarget != $(this)){
     if ($(elementTarget).is('checked') === true) {
-        $(this).attr('disabled', true);
-        $(elementTarget).attr('disabled', false);
+        $(this).attr('disabled') == true;
+        $(elementTarget).attr('disabled') === false;
     } else {
-        $(this).attr('disabled', false);
-        $(elementTarget).attr('disabled', false);
+        $(this).attr('disabled') === false;
     }
 
   }
@@ -113,25 +112,45 @@ $('#payment').change (function () {
 
 //Name validation
 function isValidName(name) {
-    return /^[a-zA-z]+$/i.test(name);
+    let userName = $('#name').val();
+
+    if (userName.length === 0 ){
+    $('#name').css('border-color', 'red');
+    return false;
+    } if (/^[a-zA-z]+$/i.test(userName) === false) {
+        $('#name').css('border-color', 'red');
+    return false;
+    }
+    else {
+        $('#name').css('border-color', '#6F9DDC')
+        return true;
+    }
+
+    //return /^[a-zA-z]+$/.test(name);
 }
 
 //Email validation
-function isValidEmail(email) {
-    return /^[^@]+@[^@.]+\.[a-z]+$/i.test(email);
-  }
+// function isValidEmail(email) {
+//     return /^[^@]+@[^@.]+\.[a-z]+$/i.test(email);
+//   }
 
 //Activity validation
 
+
+//If credit card is payment method
+//if( $('#payment').val() == 'credit card')
+
 //Credit Card Validation
-function isValidCc(creditCard) {
-    return /^\d{13,16}$/i.test(creditCard);
-}
+// function isValidCc(creditCard) {
+//     return /^\d{13,16}$/i.test(creditCard);
+// }
+
 //Zip code validation
-function isValidZip(zip) {
-    return /^\d{3}$/i.test(zip);
-}
+// function isValidZip(zip) {
+//     return /^\d{3}$/i.test(zip);
+// }
+
 //CVV validation
-function isValidCVV(cvv) {
-    return /^\d{5}$/i.test(cvv);
-}
+// function isValidCVV(cvv) {
+//     return /^\d{5}$/i.test(cvv);
+// }
