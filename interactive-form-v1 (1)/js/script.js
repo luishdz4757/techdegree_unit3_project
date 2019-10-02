@@ -86,5 +86,52 @@ $('.activities input').each(function (){
 
 });
 
+// Payment section
+// Hide Select Payment method
+$("#payment option[value='select method']").hide();
+$("#payment option[value='Credit Card']").show().attr('selected', 'selected');
+
+//If one payment option is selected the other two are hidden
+$('#payment').change (function () {
+    if ($('#payment').val() === 'Credit Card') {
+        $("#payment option[value='Credit Card']").show();
+        $("#payment option[value='Paypal']").hide();
+        $("#payment option[value='Bitcoin']").hide();
+    } if ($('#payment').val() === 'Paypal') {
+        $("#payment option[value='Credit Card']").hide();
+        $("#payment option[value='Paypal']").show();
+        $("#payment option[value='Bitcoin']").hide();
+    } if ($('#payment').val() === 'Bitcoin') {
+        $("#payment option[value='Credit Card']").hide();
+        $("#payment option[value='Paypal']").hide();
+        $("#payment option[value='Bitcoin']").show();
+    }
+});
 
 
+//Validation section
+
+//Name validation
+function isValidName(name) {
+    return /^[a-zA-z]+$/i.test(name);
+}
+
+//Email validation
+function isValidEmail(email) {
+    return /^[^@]+@[^@.]+\.[a-z]+$/i.test(email);
+  }
+
+//Activity validation
+
+//Credit Card Validation
+function isValidCc(creditCard) {
+    return /^\d{13,16}$/i.test(creditCard);
+}
+//Zip code validation
+function isValidZip(zip) {
+    return /^\d{3}$/i.test(zip);
+}
+//CVV validation
+function isValidCVV(cvv) {
+    return /^\d{5}$/i.test(cvv);
+}
