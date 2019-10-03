@@ -176,13 +176,13 @@ function isValidCc(creditCard) {
 function isValidZip(zip) {
     let userZip = $('#zip').val();
     if (userZip.length === 0) {
-        $('#cc-num').css('border-color', 'red');
+        $('#zip').css('border-color', 'red');
         return false;
     } if (/^\d{5}$/i.test(userZip) === false) {
-        $('#cc-num').css('border-color', 'red');
+        $('#zip').css('border-color', 'red');
         return false;
     } else {
-        $('#cc-num').css('border-color', '#6F9DDC');
+        $('#zip').css('border-color', '#6F9DDC');
         return true;
     };
 }
@@ -196,7 +196,7 @@ function isValidCCV(cvv) {
             $('#ccv').css('border-color', 'red');
             return false;
         } else {
-            $('#ccv').css('border-color', '#6F9DDC');
+            $('#cvv').css('border-color', '#6F9DDC');
             return true;
         };
     }
@@ -207,9 +207,8 @@ function isValidCCV(cvv) {
 //Submit function
 
         $('form').submit(function (e) {
-            // If payment is by credit card
             if( $('#payment').val() === 'credit card') {
-                if (isValidName($('#name').val()) && isValidEmail($('#mail').val()) && isValidActivity() && isValidCc($('#cc-num').val()) && isValidZip($('#zip').val()) && isValidCCV($('#ccv').val())) {
+                if (isValidName($('#name').val()) && isValidEmail($('#mail').val()) && isValidActivity() && isValidCc($('#cc-num').val()) && isValidZip($('#zip').val()) && isValidCCV($('#cvv').val())) {
                 return true;
             } else {
                 e.preventDefault();
@@ -218,7 +217,7 @@ function isValidCCV(cvv) {
                 isValidActivity();
                 isValidCc($('#cc-num'));
                 isValidZip($('#zip').val());
-                isValidCCV($('#ccv').val());
+                isValidCVV($('#cvv').val());
             } 
         }  else { 
             if (isValidName($('#name').val()) && isValidEmail($('#mail').val()) && isValidActivity()) {
