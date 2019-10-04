@@ -68,15 +68,16 @@ $('.activities').change(  (e) => {
 
     activityElement.text('Total: $' + totalActivityCost);
 //Date and time conflict
-let $dateTime = elementTarget.attr('data-date-and-time');
+let $dateTime = $(elementTarget).attr('data-day-and-time');
 
 $('.activities input').each(function (){
   if ($(this).attr('data-day-and-time') === $dateTime && elementTarget != $(this)){
-    if ($(elementTarget).is('checked') === true) {
-        $(this).attr('disabled') == true;
-        $(elementTarget).attr('disabled') === false;
+    if ($(elementTarget).prop('checked') === true) {
+        $(this).attr('disabled', true);
+        $(elementTarget).attr('disabled', false);
     } else {
-        $(this).attr('disabled') === false;
+        $(this).attr('disabled', false);
+        $(elementTarget).attr('disabled', false);
     }
 
   }
@@ -133,7 +134,7 @@ function isValidName(name) {
 function isValidEmail(email) {
     let userEmail = $('#mail').val();
     if (userEmail.length === 0) {
-    $('#email').css('border-color', 'red');
+    $('#mail').css('border-color', 'red');
     return false;
     }  if (/^[^@]+@[^@.]+\.[a-z]+$/i.test(userEmail) === false) {
         $('#mail').css('border-color', 'red');
@@ -155,7 +156,7 @@ function isValidEmail(email) {
   }
 
 //If credit card is payment method
-if( $('#payment').val() === 'credit card'){
+if( $('option[value="Credit Card"]').is(':selected')){
 
 //Credit Card Validation
 function isValidCc(creditCard) {
@@ -187,13 +188,13 @@ function isValidZip(zip) {
     };
 }
 //CVV validation
-function isValidCCV(cvv) {
+function isValidCVV(cvv) {
         let userCVV = $('#cvv').val();
         if (userCVV.length === 0) {
             $('#cvv').css('border-color', 'red');
             return false;
         } if (/^\d{3}$/i.test(userCVV) === false) {
-            $('#ccv').css('border-color', 'red');
+            $('#cvv').css('border-color', 'red');
             return false;
         } else {
             $('#cvv').css('border-color', '#6F9DDC');
@@ -207,8 +208,8 @@ function isValidCCV(cvv) {
 //Submit function
 
         $('form').submit(function (e) {
-            if( $('#payment').val() === 'credit card') {
-                if (isValidName($('#name').val()) && isValidEmail($('#mail').val()) && isValidActivity() && isValidCc($('#cc-num').val()) && isValidZip($('#zip').val()) && isValidCCV($('#cvv').val())) {
+            if( $('option[value="Credit Card"]').is(':selected')) {
+                if (isValidName($('#name').val()) && isValidEmail($('#mail').val()) && isValidActivity() && isValidCc($('#cc-num').val()) && isValidZip($('#zip').val()) && isValidCVV($('#cvv').val())) {
                 return true;
             } else {
                 e.preventDefault();
