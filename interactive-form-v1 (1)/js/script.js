@@ -89,7 +89,25 @@ $('.activities input').each(function (){
 // Payment section
 // Hide Select Payment method
 $("#payment option[value='select method']").hide();
+//$("#payment option[value='PayPal']").hide();
+//$("#payment option[value='Bitcoin']").hide();
 $("#payment option[value='Credit Card']").show().attr('selected', 'selected');
+
+$('#payment').change (function () {
+  if ($('#payment').val() === 'Credit Card') {
+    $('#credit-card').show();
+    $('#paypal').hide();
+    $('#bitcoin').hide();
+  } else if ($('#payment').val() === 'PayPal') {
+    $('#credit-card').hide();
+    $('#paypal').show();
+    $('#bitcoin').hide();
+  } else if ($('#payment').val() === 'Bitcoin') {
+    $('#credit-card').hide();
+    $('#paypal').hide();
+    $('#bitcoin').show();
+  }
+});
 
 //If one payment option is selected the other two are hidden
 $('#payment').change (function () {
@@ -148,6 +166,10 @@ function isValidEmail(email) {
 //Activity validation
   function isValidActivity() {
     if (totalActivityCost === 0) {
+        const activityError = $('<span></span>');
+        activityError.css({'color': 'red'});
+        activityError.text(" Please Select At Least 1 Activity")
+        $('.activities span').append(activityError);
         return false;
     } else {
         return true;
