@@ -91,8 +91,9 @@ $('.activities input').each(function (){
 $("#payment option[value='select method']").hide();
 //$("#payment option[value='PayPal']").hide();
 //$("#payment option[value='Bitcoin']").hide();
-$("#payment option[value='Credit Card']").show().attr('selected', 'selected');
+$("#payment option[value='Credit Card']").attr('selected','selected');
 
+//If one payment method is chosen, the other two are hidden
 $('#payment').change (function () {
   if ($('#payment').val() === 'Credit Card') {
     $('#credit-card').show();
@@ -108,24 +109,6 @@ $('#payment').change (function () {
     $('#bitcoin').show();
   }
 });
-
-//If one payment option is selected the other two are hidden
-$('#payment').change (function () {
-    if ($('#payment').val() === 'Credit Card') {
-        $("#payment option[value='Credit Card']").show();
-        $("#payment option[value='Paypal']").hide();
-        $("#payment option[value='Bitcoin']").hide();
-    } if ($('#payment').val() === 'Paypal') {
-        $("#payment option[value='Credit Card']").hide();
-        $("#payment option[value='Paypal']").show();
-        $("#payment option[value='Bitcoin']").hide();
-    } if ($('#payment').val() === 'Bitcoin') {
-        $("#payment option[value='Credit Card']").hide();
-        $("#payment option[value='Paypal']").hide();
-        $("#payment option[value='Bitcoin']").show();
-    }
-});
-
 
 //Validation section
 
