@@ -12,38 +12,39 @@ $('#title').change (function () {
     }
 })
 
-
-//Updates color field to read "Please Select a T-shirt theme"
-//$('#colors-js-puns label').empty();
-//$('#colors-js-puns label').append("Please select a T-shirt theme");
+//Makes size small the default size whenn site is first loaded
+$("#size option[value='small']").attr('selected','selected');
 
 //Hides the color options from the drop down menu
 $('#color').hide();
-$('#colors-js-puns label').hide();
 
-//If theme jspuns shirt is seleected then only jspuns color show
+//Hides the "Select Theme" option on the design section
+$('#design option[value=""]').remove();
+
+//Only corresponding colors show depending on which theme is chosen
  $('#design').change ( function ()  { 
     if ($('#design').val() === 'js puns') {
         $('#color').show();
         $('#color-js-puns label').show();
+        $('#design option[value=""]').hide();
         $("#color option[value='tomato']").hide();
         $("#color option[value='steelblue']").hide();
         $("#color option[value='dimgrey']").hide();
         $("#color option[value='cornflowerblue']").show();
         $("#color option[value='darkslategrey']").show();
         $("#color option[value='gold']").show();
-        } else if ($('#design').val() === 'heart js') {
+        } if ($('#design').val() === 'heart js') {
             $('#color').show();
             $('#color-js-puns label').show();
+            $('#design option[value=""]').hide();
             $("#color option[value='tomato']").show().attr('selected', 'selected');
             $("#color option[value='steelblue']").show();
             $("#color option[value='dimgrey']").show();
             $("#color option[value='cornflowerblue']").hide();
             $("#color option[value='darkslategrey']").hide();
             $("#color option[value='gold']").hide();
-    }
-});
-
+        }
+    });
 // Activity Section
 
 //Create element to display total cost and append it to "".activity"
@@ -89,8 +90,8 @@ $('.activities input').each(function (){
 // Payment section
 // Hide Select Payment method
 $("#payment option[value='select method']").hide();
-//$("#payment option[value='PayPal']").hide();
-//$("#payment option[value='Bitcoin']").hide();
+$('#paypal').hide();
+$('#bitcoin').hide();
 $("#payment option[value='Credit Card']").attr('selected','selected');
 
 //If one payment method is chosen, the other two are hidden
