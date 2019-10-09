@@ -19,21 +19,23 @@ $("#size option[value='small']").attr('selected','selected');
 $('#color').hide();
 
 //Hides the "Select Theme" option on the design section
-$('#design option[value=""]').remove();
+$("#design").val($("#design option:first").prop('hidden', true));
 
-//Only corresponding colors show depending on which theme is chosen
- $('#design').change ( function ()  { 
+//Corresponding colors show to its own theme
+$('#design').change ( function ()  { 
     if ($('#design').val() === 'js puns') {
+        //$('#design option[value=""]').prop('hidden', true);
         $('#color').show();
         $('#color-js-puns label').show();
         $('#design option[value=""]').hide();
-        $("#color option[value='tomato']").hide();
+        $("#color option[value='tomato']").hide().removeAttr('selected');
         $("#color option[value='steelblue']").hide();
         $("#color option[value='dimgrey']").hide();
-        $("#color option[value='cornflowerblue']").show();
+        $("#color option[value='cornflowerblue']").show().attr('selected', 'selected');
         $("#color option[value='darkslategrey']").show();
         $("#color option[value='gold']").show();
         } if ($('#design').val() === 'heart js') {
+           // $('#design option[value=""]').prop('hidden', true);
             $('#color').show();
             $('#color-js-puns label').show();
             $('#design option[value=""]').hide();
